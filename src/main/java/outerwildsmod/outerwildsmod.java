@@ -212,7 +212,7 @@ public class outerwildsmod implements
     @Override
     public void receiveEditCards() {
         new AutoAdd(modID) //Loads files from this mod
-                .packageFilter(BaseCard.class) //In the same package as this class
+                .packageFilter("outerwildsmod.cards") //In the same package as this class
                 .setDefaultSeen(true) //And marks them as seen in the compendium
                 .cards(); //Adds the cards
     }

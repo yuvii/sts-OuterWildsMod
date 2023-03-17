@@ -32,6 +32,18 @@
   "${modID}:HourglassTwins": {
     "NAME": "Hourglass Twins",
     "DESCRIPTION": "Deal !D! damage, gain !B! Block"
+  },
+  "${modID}:QuantumStrikeSingle": {
+    "NAME": "Quantum Strike",
+    "DESCRIPTION": "Deal !D! damage"
+  },
+  "${modID}:QuantumStrikeMulti": {
+    "NAME": "Quantum Strike",
+    "DESCRIPTION": "Deal !D! damage !M! times"
+  },
+  "${modID}:Doze": {
+    "NAME": "Doze",
+    "DESCRIPTION": "Doze Off"
   }
 
 }

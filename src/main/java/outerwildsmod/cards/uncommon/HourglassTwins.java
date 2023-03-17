@@ -91,7 +91,6 @@ public class HourglassTwins extends BaseCard {
     private static final int BASE_BLOCK = 0;
     private int damageModifier = -1;
     private int blockModifier = 1;
-    private boolean reversed = false;
 
     private int MAX = 10;
 
@@ -116,33 +115,22 @@ public class HourglassTwins extends BaseCard {
     }
 
 
-    public void triggerWhenDrawn() {
-        outerwildsmod.logger.info("drawn trigger!");
-        this.setStats();
-    }
-
-
-    public void triggerOnOtherCardPlayed(AbstractCard c) {
-        outerwildsmod.logger.info("other card triggered!");
-        this.setStats();
-    }
+//    public void triggerWhenDrawn() {
+//        outerwildsmod.logger.info("drawn trigger!");
+//        this.setStats();
+//    }
+////
+////
+//    public void triggerOnOtherCardPlayed(AbstractCard c) {
+//        outerwildsmod.logger.info("other card triggered!");
+//        this.setStats();
+//    }
 
     private void setStats() {
 
-        int damage = this.calculateTime(this.baseDamage, this.damageModifier);
-        int block  = this.calculateTime(this.baseBlock, this.blockModifier);
+        this.baseDamage = this.calculateTime(BASE_DAMAGE, this.damageModifier);
+        this.baseBlock = this.calculateTime(BASE_BLOCK, this.blockModifier);
 
-        int cardsPlayed = AbstractDungeon.actionManager.cardsPlayedThisCombat.size();
-
-        outerwildsmod.logger.info("---------");
-        outerwildsmod.logger.info(String.format("cards played: %d", cardsPlayed));
-        outerwildsmod.logger.info(String.format("damage is: %d", damage));
-        outerwildsmod.logger.info(String.format("block is: %d", block));
-        outerwildsmod.logger.info("---------");
-
-
-        this.baseDamage = damage;
-        this.baseBlock = block;
     }
 
     private int calculateTime(int baseValue, int modifier) {
@@ -153,14 +141,14 @@ public class HourglassTwins extends BaseCard {
         if (div % 2 == 0) {
             return baseValue + (modo * modifier);
         } else {
-            return (baseValue + MAX) - (modo * modifier);
+            return baseValue + ( modifier * ( MAX - modo ));
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-//        outerwildsmod.logger.info("balabam bam!");
+        this.setStats();
         // Deal damage to the target
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
@@ -170,16 +158,17 @@ public class HourglassTwins extends BaseCard {
     }
 
     @Override
+    public void applyPowers() {
+        setStats();
+        super.applyPowers();
+    }
+
+
+    @Override
     public AbstractCard makeCopy() {
         return new HourglassTwins();
     }
 
-    @Override
-    public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeBaseCost(1);
-        }
-    }
+
 }
 

@@ -23,7 +23,8 @@ import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import outerwildsmod.cards.basic.HDefend;
 import outerwildsmod.cards.basic.HStrike;
-import outerwildsmod.cards.common.attacks.QuantumStrike;
+import outerwildsmod.cards.common.attacks.QuantumStrikeSingle;
+import outerwildsmod.cards.common.skills.Doze;
 import outerwildsmod.cards.uncommon.HourglassTwins;
 
 import java.util.ArrayList;
@@ -89,11 +90,23 @@ public class Hearthian extends CustomPlayer {
 //        retVal.add(HStrike.ID);
 //        retVal.add(HDefend.ID);
 //        retVal.add(HDefend.ID);
-        retVal.add(QuantumStrike.ID);
-        retVal.add(QuantumStrike.ID);
-        retVal.add(QuantumStrike.ID);
-        retVal.add(QuantumStrike.ID);
-        retVal.add(QuantumStrike.ID);
+        retVal.add(QuantumStrikeSingle.ID);
+        retVal.add(QuantumStrikeSingle.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+        retVal.add(Doze.ID);
+
+
 
         retVal.add(HourglassTwins.ID);
 
