@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import outerwildsmod.cards.BaseCard;
 
 //public class HourglassTwins extends BaseCard {
@@ -80,6 +81,8 @@ import outerwildsmod.cards.BaseCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import outerwildsmod.character.Hearthian;
 import outerwildsmod.outerwildsmod;
+import outerwildsmod.powers.BasePower;
+import outerwildsmod.powers.DoubleTimePower;
 import outerwildsmod.util.CardInfo;
 
 import static outerwildsmod.outerwildsmod.makeID;
@@ -93,6 +96,8 @@ public class HourglassTwins extends BaseCard {
     private int blockModifier = 1;
 
     private int MAX = 10;
+
+    private int cardsPlayed;
 
 //    public static final Logger logger = LogManager.getLogger(outerwildsmod.modID);
 
@@ -127,19 +132,24 @@ public class HourglassTwins extends BaseCard {
 //    }
 
     private void setStats() {
-
+        
         this.baseDamage = this.calculateTime(BASE_DAMAGE, this.damageModifier);
         this.baseBlock = this.calculateTime(BASE_BLOCK, this.blockModifier);
-
     }
 
     private int calculateTime(int baseValue, int modifier) {
-        int cardsPlayedThisCombat = AbstractDungeon.actionManager.cardsPlayedThisCombat.size();
+
+        int cardsPlayedThisCombat;
+
+        AbstractPower doubleTime = AbstractDungeon.player.getPower(DoubleTimePower.POWER_ID);
+        if (doubleTime != null) {            cardsPlayedThisCombat = ((DoubleTimePower)doubleTime).cardsPlayed; }
+        else                    {            cardsPlayedThisCombat = AbstractDungeon.actionManager.cardsPlayedThisCombat.size(); }
+
         int modo = cardsPlayedThisCombat % MAX;
         int div  = (cardsPlayedThisCombat - modo) / MAX;
 
         if (div % 2 == 0) {
-            return baseValue + (modo * modifier);
+            return baseValue + ( modifier * modo );
         } else {
             return baseValue + ( modifier * ( MAX - modo ));
         }

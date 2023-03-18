@@ -31,7 +31,7 @@
   },
   "${modID}:HourglassTwins": {
     "NAME": "Hourglass Twins",
-    "DESCRIPTION": "Deal !D! damage, gain !B! Block"
+    "DESCRIPTION": "Deal !D! damage NL gain !B! Block"
   },
   "${modID}:QuantumStrikeSingle": {
     "NAME": "Quantum Strike",
@@ -41,9 +41,25 @@
     "NAME": "Quantum Strike",
     "DESCRIPTION": "Deal !D! damage !M! times"
   },
-  "${modID}:Doze": {
-    "NAME": "Doze",
-    "DESCRIPTION": "Doze Off"
+  "${modID}:Blink": {
+    "NAME": "Blink",
+    "DESCRIPTION": "Do Nothing. Upgrades when drawn",
+    "UPGRADE_DESCRIPTION": "Draw !M! card"
+  },
+  "${modID}:DozeOff": {
+    "NAME": "Doze Off",
+    "DESCRIPTION": "Add !M! *Blinks into your hand. "
+  },
+  "${modID}:GhostMatterVuln": {
+    "NAME": "Ghost Matter",
+    "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies"
+  },
+  "${modID}:GhostMatterWeak": {
+    "NAME": "Ghost Matter",
+    "DESCRIPTION": "Apply !M! Weak to ALL enemies"
+  },
+  "${modID}:DoubleTime": {
+    "NAME": "Double Time",
+    "DESCRIPTION": "Time moves twice as fast"
   }
-
 }

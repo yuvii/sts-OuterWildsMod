@@ -1,8 +1,8 @@
 package outerwildsmod.cards.common.skills;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.tempCards.Shiv;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import outerwildsmod.cards.BaseCard;
@@ -12,32 +12,40 @@ import outerwildsmod.util.CardInfo;
 
 import static outerwildsmod.outerwildsmod.makeID;
 
-public class Doze extends BaseCard {
-
+public class DozeOff extends BaseCard {
 
     private static final CardInfo cardInfo = new CardInfo(
-            "Doze",
-            0,
+            "DozeOff",
+            1,
             CardType.SKILL,
             CardTarget.NONE,
             CardRarity.BASIC,
-            CardColor.COLORLESS
+            Hearthian.Enums.CARD_COLOR
     );
 
     public final static String ID = makeID(cardInfo.baseId);
 
-    public Doze() {
+    public DozeOff() {
         super(cardInfo);
-        this.exhaust = true;
-        this.baseMagicNumber = 1;
+
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
+        this.cardsToPreview = new Blink();
+
+    }
+
+    public void upgrade() {
+        if (!this.upgraded) {
+            this.upgradeName();
+            this.upgradeMagicNumber(1);
+        }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p, this.magicNumber));
+        this.addToBot(new MakeTempCardInHandAction(new Blink(), this.magicNumber));
     }
-
     @Override
-    public AbstractCard makeCopy() { return new Doze(); }
+    public AbstractCard makeCopy() { return new DozeOff(); }
+
 }

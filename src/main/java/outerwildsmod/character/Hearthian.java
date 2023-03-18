@@ -8,8 +8,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.blue.Defend_Blue;
-import com.megacrit.cardcrawl.cards.green.Neutralize;
 import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,11 +19,11 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import outerwildsmod.cards.basic.GhostMatterVuln;
 import outerwildsmod.cards.basic.HDefend;
 import outerwildsmod.cards.basic.HStrike;
 import outerwildsmod.cards.common.attacks.QuantumStrikeSingle;
-import outerwildsmod.cards.common.skills.Doze;
-import outerwildsmod.cards.uncommon.HourglassTwins;
+import outerwildsmod.cards.common.skills.DozeOff;
 
 import java.util.ArrayList;
 
@@ -86,31 +84,19 @@ public class Hearthian extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         //List of IDs of cards for your starting deck.
         //If you want multiple of the same card, you have to add it multiple times.
-//        retVal.add(HStrike.ID);
-//        retVal.add(HStrike.ID);
-//        retVal.add(HDefend.ID);
-//        retVal.add(HDefend.ID);
+        retVal.add(HStrike.ID);
+        retVal.add(HStrike.ID);
+        retVal.add(HDefend.ID);
+        retVal.add(HDefend.ID);
+        retVal.add(HStrike.ID);
+        retVal.add(HStrike.ID);
+        retVal.add(HDefend.ID);
+        retVal.add(HDefend.ID);
+
+        retVal.add(GhostMatterVuln.ID);
         retVal.add(QuantumStrikeSingle.ID);
-        retVal.add(QuantumStrikeSingle.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
-        retVal.add(Doze.ID);
+        retVal.add(DozeOff.ID);
 
-
-
-        retVal.add(HourglassTwins.ID);
-
-        retVal.add(HourglassTwins.ID);
         return retVal;
     }
 
