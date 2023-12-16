@@ -2,7 +2,11 @@ General Mechanics:
 
 - Quantum cards: cards that let you choose a possible action, and then stays that way for the rest of combat
 - Time cards: cards that change their values based on how many cards you've played (this combat)
-- Knowledge cards: cards that let you know more information
+- Entropy: Something with exhaust that's interesting and reflects the ideas of what is entropy.
+Current ideas:
+* have some kind of "Entropy" counter that triggers exhaust when accumulated or something similar.
+* maybe do something interesting with voids. Like cards that create voids but restore the energy in a different way
+
 
 Q
 
@@ -32,3 +36,15 @@ K
 
 OTHER
 - c(a) Crash: deal 12 damage, add a burn into your hand
+
+
+
+------------------------------------
+
+Quantum cards change whenever you blink.
+superposition - they play all variations.
+
+
+
+
+

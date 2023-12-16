@@ -4,13 +4,13 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import outerwildsmod.actions.BlinkAction;
 import outerwildsmod.cards.BaseCard;
 import outerwildsmod.util.CardInfo;
 
 import static outerwildsmod.outerwildsmod.makeID;
 
 public class Blink extends BaseCard {
-
 
     private static final CardInfo cardInfo = new CardInfo(
             "Blink",
@@ -40,9 +40,8 @@ public class Blink extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (this.upgraded) {
-            addToBot(new DrawCardAction(p, this.magicNumber));
-        }
+        addToBot(new DrawCardAction(p, this.magicNumber));
+        addToBot(new BlinkAction());
     }
     public void upgrade() {
         if (!this.upgraded) {

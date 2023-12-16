@@ -23,10 +23,28 @@
   {
     "PROPER_NAME": "Quantum",
     "NAMES": [
+      "Quantum",
       "quantum",
       "||",
       "or"
     ],
-    "DESCRIPTION": "Quantum: Choose an action. This card will lock in to that state for the rest of combat."
+    "DESCRIPTION": "Choose an option. This card will lock in to that state for the rest of combat."
+  },
+  {
+  "PROPER_NAME": "Time",
+  "NAMES": [
+    "Time",
+    "time",
+    "timon"
+  ],
+  "DESCRIPTION": "Applies an effect whenever you play a card"
+  },
+  {
+    "PROPER_NAME": "Reverse Polarity",
+    "NAMES": [
+      "Reverse",
+      "reverse"
+    ],
+    "DESCRIPTION": "After playing X cards, reverse Time effects"
   }
 ]

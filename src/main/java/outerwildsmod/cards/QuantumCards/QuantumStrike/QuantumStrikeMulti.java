@@ -1,4 +1,4 @@
-package outerwildsmod.cards.common.attacks;
+package outerwildsmod.cards.QuantumCards.QuantumStrike;
 
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import outerwildsmod.cards.abstractCards.AbstractQuantumCard;
+import outerwildsmod.cards.AbstractCards.AbstractQuantumCard;
 import outerwildsmod.character.Hearthian;
 
 import java.util.ArrayList;
@@ -23,7 +23,6 @@ public class QuantumStrikeMulti extends AbstractQuantumCard {
     public static final String ID = makeID("QuantumStrikeMulti");
     public static final String IMG = getCardTextureString(ID, CardType.ATTACK);
 
-
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
@@ -33,39 +32,19 @@ public class QuantumStrikeMulti extends AbstractQuantumCard {
 
     private static final int HITS = 3;
 
-    protected static ArrayList<TooltipInfo> toolTips;
+    private static final int BASE_DAMAGE = 3;
 
-    // /STAT DECLARATION/
+    private static final int HITS_UPG = 1;
 
     public QuantumStrikeMulti() {
-        this(null);
-    }
-
-    public QuantumStrikeMulti(AbstractQuantumCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
-        this.baseDamage = 3;
+        this.baseDamage      = BASE_DAMAGE;
         this.baseMagicNumber = HITS;
-        this.magicNumber = this.baseMagicNumber;
-
-        if (linkedCard == null) {
-            setLinkedCard(new QuantumStrikeSingle(this));
-        } else {
-            setLinkedCard(linkedCard);
-        }
+        this.magicNumber     = this.baseMagicNumber;
     }
 
-    @Override
-    public List<TooltipInfo> getCustomTooltips() {
-        if (toolTips == null) {
-            toolTips = new ArrayList<>();
-            toolTips.add(new TooltipInfo(TipHelper.capitalize(GameDictionary.WEAK.NAMES[0]), GameDictionary.keywords.get(GameDictionary.WEAK.NAMES[0])));
-        }
-        return toolTips;
-    }
-
-    @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void useCard(AbstractPlayer p, AbstractMonster m) {
         for(int i = 1; i < this.magicNumber+1; i++) {
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
@@ -75,6 +54,7 @@ public class QuantumStrikeMulti extends AbstractQuantumCard {
     @Override
     public void upgrade() {
         if (!upgraded) {
+            this.magicNumber += HITS_UPG;
             upgradeName();
             initializeDescription();
             super.upgrade();

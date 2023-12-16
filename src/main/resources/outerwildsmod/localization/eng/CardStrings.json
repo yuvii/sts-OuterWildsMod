@@ -31,20 +31,20 @@
   },
   "${modID}:HourglassTwins": {
     "NAME": "Hourglass Twins",
-    "DESCRIPTION": "Deal !D! damage NL gain !B! Block"
+    "DESCRIPTION": "Deal !D! damage NL gain !B! Block NL ${modID}:Time +1B\\-1D NL ${modID}:Reverse 10"
   },
   "${modID}:QuantumStrikeSingle": {
     "NAME": "Quantum Strike",
-    "DESCRIPTION": "Deal !D! damage"
+    "DESCRIPTION": "${modID}:Quantum NL Deal !D! damage"
   },
   "${modID}:QuantumStrikeMulti": {
     "NAME": "Quantum Strike",
-    "DESCRIPTION": "Deal !D! damage !M! times"
+    "DESCRIPTION": "${modID}:Quantum NL Deal !D! damage !M! times"
   },
   "${modID}:Blink": {
     "NAME": "Blink",
-    "DESCRIPTION": "Do Nothing. Upgrades when drawn",
-    "UPGRADE_DESCRIPTION": "Draw !M! card"
+    "DESCRIPTION": "Draw !M! card. Upgrades when drawn. NL Exhaust",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards"
   },
   "${modID}:DozeOff": {
     "NAME": "Doze Off",
@@ -61,5 +61,22 @@
   "${modID}:DoubleTime": {
     "NAME": "Double Time",
     "DESCRIPTION": "Time moves twice as fast"
+  },
+  "${modID}:CrashShip": {
+    "NAME": "Crash",
+    "DESCRIPTION": "Deal !D! damage NL apply !M! Vulnerable NL gain !M! Vulnerable"
+  },
+  "${modID}:JetpackBoosterDraw": {
+    "NAME": "Jetpack Booster",
+    "DESCRIPTION": "Draw 2 cards, gain 1 [E]"
+  },
+  "${modID}:JetpackBoosterEnergy": {
+    "NAME": "Jetpack Booster",
+    "DESCRIPTION": "Draw 1 card, gain 2 [E]"
+  },
+  "${modID}:InfiniteBlinks": {
+    "NAME": "Infinite Blinks",
+    "DESCRIPTION": "At the start of your turn, add a *Blink into your hand.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, add a *Blink into your hand."
   }
 }

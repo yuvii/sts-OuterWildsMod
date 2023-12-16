@@ -19,10 +19,10 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import outerwildsmod.cards.basic.GhostMatterVuln;
+import outerwildsmod.cards.QuantumCards.GhostMatter.GhostMatterVuln;
 import outerwildsmod.cards.basic.HDefend;
 import outerwildsmod.cards.basic.HStrike;
-import outerwildsmod.cards.common.attacks.QuantumStrikeSingle;
+import outerwildsmod.cards.QuantumCards.QuantumStrike.QuantumStrikeSingle;
 import outerwildsmod.cards.common.skills.DozeOff;
 
 import java.util.ArrayList;

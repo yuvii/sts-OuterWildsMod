@@ -1,21 +1,24 @@
 package outerwildsmod.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.tempCards.Shiv;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import outerwildsmod.cards.BaseCard;
-import outerwildsmod.cards.common.skills.Blink;
 import outerwildsmod.character.Hearthian;
 import outerwildsmod.powers.DoubleTimePower;
+import outerwildsmod.powers.InfiniteBlinksPower;
 import outerwildsmod.util.CardInfo;
 
 import static outerwildsmod.outerwildsmod.makeID;
 
-public class DoubleTime extends BaseCard {
+public class InfiniteBlinks extends BaseCard {
 
     private static final CardInfo cardInfo = new CardInfo(
-            "DoubleTime",
-            2,
+            "InfiniteBlinks",
+            1,
             CardType.POWER,
             CardTarget.NONE,
             CardRarity.UNCOMMON,
@@ -24,13 +27,15 @@ public class DoubleTime extends BaseCard {
 
     public final static String ID = makeID(cardInfo.baseId);
 
-    public DoubleTime() {
+    public InfiniteBlinks() {
         super(cardInfo);
-        this.baseMagicNumber = 1;
+        this.baseMagicNumber = this.magicNumber = 1;
+        this.setInnate(false, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new DoubleTimePower(p, 1)));
+        addToBot(new ApplyPowerAction(p, p, new InfiniteBlinksPower(p, this.magicNumber)));
     }
+
 }

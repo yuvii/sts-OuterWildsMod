@@ -90,8 +90,11 @@ import static outerwildsmod.outerwildsmod.makeID;
 
 public class HourglassTwins extends BaseCard {
 
-    private static final int BASE_DAMAGE = 10;
-    private static final int BASE_BLOCK = 0;
+    private static final int BASE_DAMAGE = 15;
+    private static final int BASE_BLOCK = 5;
+
+    private static final int BASE_DAMAGE_UPG = 20;
+    private static final int BASE_BLOCK_UPG = 10;
     private int damageModifier = -1;
     private int blockModifier = 1;
 
@@ -103,10 +106,10 @@ public class HourglassTwins extends BaseCard {
 
     private static final CardInfo cardInfo = new CardInfo(
             "HourglassTwins",
-            1,
+            2,
             CardType.ATTACK,
             CardTarget.ENEMY,
-            CardRarity.BASIC,
+            CardRarity.UNCOMMON,
             Hearthian.Enums.CARD_COLOR
     );
 
@@ -132,9 +135,15 @@ public class HourglassTwins extends BaseCard {
 //    }
 
     private void setStats() {
-        
-        this.baseDamage = this.calculateTime(BASE_DAMAGE, this.damageModifier);
-        this.baseBlock = this.calculateTime(BASE_BLOCK, this.blockModifier);
+
+        if (this.upgraded) {
+            this.baseDamage = this.calculateTime(BASE_DAMAGE_UPG, this.damageModifier);
+            this.baseBlock = this.calculateTime(BASE_BLOCK_UPG, this.blockModifier);
+        } else {
+            this.baseDamage = this.calculateTime(BASE_DAMAGE, this.damageModifier);
+            this.baseBlock = this.calculateTime(BASE_BLOCK, this.blockModifier);
+        }
+
     }
 
     private int calculateTime(int baseValue, int modifier) {
@@ -153,6 +162,9 @@ public class HourglassTwins extends BaseCard {
         } else {
             return baseValue + ( modifier * ( MAX - modo ));
         }
+
+
+        // Max - ABS ( MAX - ( cardsPlayed % (MAX*2) ) )
     }
 
     @Override
@@ -173,6 +185,12 @@ public class HourglassTwins extends BaseCard {
         super.applyPowers();
     }
 
+    @Override
+    public void upgrade() {
+        super.upgrade();
+        this.baseBlock = BASE_BLOCK_UPG;
+        this.baseDamage = BASE_DAMAGE_UPG;
+    }
 
     @Override
     public AbstractCard makeCopy() {

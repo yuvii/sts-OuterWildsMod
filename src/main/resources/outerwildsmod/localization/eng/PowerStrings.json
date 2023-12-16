@@ -11,5 +11,13 @@
       "Time moves",
       "times faster"
     ]
+  },
+  "Infinite Blades": {
+    "NAME": "Infinite Blades",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add",
+      "*Blinks into your hand.",
+      "*Blink into your hand."
+    ]
   }
 }

@@ -1,7 +1,5 @@
 package outerwildsmod.actions;
 
-import outerwildsmod.cards.abstractCards.AbstractQuantumCard;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.TransformCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,8 +8,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class SwapCardsAction extends AbstractGameAction {
-    private AbstractCard toReplace;
-    private AbstractCard newCard;
+    private final AbstractCard toReplace;
+    private final AbstractCard newCard;
 
     public SwapCardsAction(AbstractCard toReplace, AbstractCard newCard) {
         this.actionType = ActionType.SPECIAL;
@@ -34,11 +32,6 @@ public class SwapCardsAction extends AbstractGameAction {
             index++;
         }
         if(found && toReplace != null) {
-            if (toReplace instanceof AbstractQuantumCard && newCard instanceof AbstractQuantumCard) {
-                ((AbstractQuantumCard) toReplace).onSwapOut();
-                ((AbstractQuantumCard) newCard).onSwapIn();
-
-            }
             newCard.cardsToPreview = toReplace.makeStatEquivalentCopy();
             newCard.applyPowers();
             newCard.cardsToPreview.applyPowers();

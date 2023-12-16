@@ -1,4 +1,4 @@
-package outerwildsmod.cards.basic;
+package outerwildsmod.cards.QuantumCards.GhostMatter;
 
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -8,13 +8,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
-import outerwildsmod.cards.abstractCards.AbstractQuantumCard;
-import outerwildsmod.cards.common.attacks.QuantumStrikeSingle;
+import outerwildsmod.cards.AbstractCards.AbstractQuantumCard;
 import outerwildsmod.character.Hearthian;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import static outerwildsmod.outerwildsmod.makeID;
 import static outerwildsmod.util.TextureLoader.getCardTextureString;
@@ -24,7 +21,6 @@ public class GhostMatterVuln extends AbstractQuantumCard {
 
     public static final String ID = makeID("GhostMatterVuln");
     public static final String IMG = getCardTextureString(ID, CardType.SKILL);
-
 
     private static final AbstractCard.CardRarity RARITY = CardRarity.BASIC;
     private static final AbstractCard.CardTarget TARGET = CardTarget.ALL_ENEMY;
@@ -39,34 +35,22 @@ public class GhostMatterVuln extends AbstractQuantumCard {
 
     protected static ArrayList<TooltipInfo> toolTips;
 
-    // /STAT DECLARATION/
-
     public GhostMatterVuln() {
-        this(null);
-    }
-
-    public GhostMatterVuln(AbstractQuantumCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-
 
         this.baseMagicNumber = MAGIC;
         this.magicNumber = this.baseMagicNumber;
 
-        if (linkedCard == null) {
-            setLinkedCard(new GhostMatterWeak(this));
-        } else {
-            setLinkedCard(linkedCard);
-        }
+        this.isMainCard = true;
+
+        linkCard(new GhostMatterWeak());
     }
 
-    @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void useCard(AbstractPlayer p, AbstractMonster m) {
 
-        Iterator var3 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while(var3.hasNext()) {
-            AbstractMonster mo = (AbstractMonster) var3.next();
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             this.addToBot(new ApplyPowerAction(mo, p, new VulnerablePower(mo, this.magicNumber, false), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
         }
+
     }
 }
