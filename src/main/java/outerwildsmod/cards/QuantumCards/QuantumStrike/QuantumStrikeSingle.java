@@ -61,6 +61,16 @@ public class QuantumStrikeSingle extends AbstractQuantumCard {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
 
+    @Override
+    public void onSwapIn() {
+
+    }
+
+    @Override
+    public void onSwapOut() {
+
+    }
+
     //Upgraded stats.
     @Override
     public void upgrade() {

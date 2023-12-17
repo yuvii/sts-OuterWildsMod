@@ -42,5 +42,15 @@ public class JetpackBoosterDraw extends AbstractQuantumCard {
     }
 
     @Override
+    public void onSwapIn() {
+
+    }
+
+    @Override
+    public void onSwapOut() {
+
+    }
+
+    @Override
     public AbstractCard makeCopy() { return new JetpackBoosterDraw(); }
 }

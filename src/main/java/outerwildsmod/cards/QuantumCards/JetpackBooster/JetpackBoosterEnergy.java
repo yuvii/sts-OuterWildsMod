@@ -40,6 +40,16 @@ public class JetpackBoosterEnergy extends AbstractQuantumCard {
     }
 
     @Override
+    public void onSwapIn() {
+
+    }
+
+    @Override
+    public void onSwapOut() {
+
+    }
+
+    @Override
     public void upgrade() {
         super.upgrade();
         this.upgradeBaseCost(0);

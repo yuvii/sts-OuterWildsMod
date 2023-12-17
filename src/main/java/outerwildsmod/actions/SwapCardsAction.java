@@ -12,11 +12,18 @@ public class SwapCardsAction extends AbstractGameAction {
     private final AbstractCard toReplace;
     private final AbstractCard newCard;
 
-    public SwapCardsAction(AbstractCard toReplace, AbstractCard newCard) {
+    private boolean effect;
+
+    public SwapCardsAction(AbstractCard toReplace, AbstractCard newCard, boolean effect) {
         this.actionType = ActionType.SPECIAL;
-        this.duration = Settings.ACTION_DUR_MED;
+        this.duration = Settings.ACTION_DUR_FASTER;
         this.toReplace = toReplace;
         this.newCard = newCard;
+        this.effect = effect;
+    }
+
+    public SwapCardsAction(AbstractCard toReplace, AbstractCard newCard) {
+        this(toReplace, newCard, true);
     }
 
     @Override
@@ -33,6 +40,23 @@ public class SwapCardsAction extends AbstractGameAction {
             index++;
         }
         if(found && toReplace != null) {
+            if (toReplace instanceof AbstractQuantumCard && newCard instanceof AbstractQuantumCard) {
+
+                if (!((AbstractQuantumCard) toReplace).canSwap()) {
+                    this.isDone = true;
+                    return;
+                }
+
+                ((AbstractQuantumCard) toReplace).onSwapOut();
+                ((AbstractQuantumCard) newCard).onSwapIn();
+
+                ((AbstractQuantumCard) newCard).linkCard((AbstractQuantumCard) toReplace);
+                for (AbstractQuantumCard qc : ((AbstractQuantumCard) toReplace).linkedCards) {
+                    if (qc.getClass() != newCard.getClass()) {
+                        ((AbstractQuantumCard) newCard).linkCard(qc);
+                    }
+                }
+            }
 //            newCard.cardsToPreview = toReplace.makeStatEquivalentCopy();
             newCard.applyPowers();
 
@@ -42,7 +66,7 @@ public class SwapCardsAction extends AbstractGameAction {
                 AbstractDungeon.player.releaseCard();
             }
             AbstractDungeon.actionManager.cardQueue.removeIf(q -> q.card == toReplace);
-            this.addToTop(new UpdateAfterTransformAction(newCard));
+            this.addToTop(new UpdateAfterTransformAction(newCard, this.effect));
             this.addToTop(new TransformCardInHandAction(index, newCard));
             //p.hand.group.remove(index);
             //p.hand.group.add(index, newCard);

@@ -7,15 +7,24 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 public class UpdateAfterTransformAction extends AbstractGameAction {
     private final AbstractCard cardToUpdate;
 
-    public UpdateAfterTransformAction(AbstractCard cardToUpdate) {
+    private boolean glow;
+
+    public UpdateAfterTransformAction(AbstractCard cardToUpdate, boolean glow) {
         this.cardToUpdate = cardToUpdate;
+        this.glow = glow;
+    }
+
+    public UpdateAfterTransformAction(AbstractCard cardToUpdate) {
+        this(cardToUpdate, true);
     }
 
     @Override
     public void update() {
         AbstractDungeon.player.hand.applyPowers();
         AbstractDungeon.player.hand.glowCheck();
-        cardToUpdate.superFlash();
+        if (this.glow) {
+            cardToUpdate.superFlash();
+        }
         cardToUpdate.initializeDescription();
         this.isDone = true;
     }

@@ -53,4 +53,14 @@ public class GhostMatterVuln extends AbstractQuantumCard {
         }
 
     }
+
+    @Override
+    public void onSwapIn() {
+
+    }
+
+    @Override
+    public void onSwapOut() {
+
+    }
 }

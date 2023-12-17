@@ -43,7 +43,7 @@ public class QuantumStrikeDouble extends AbstractQuantumCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         this.baseDamage = BASE_DAMAGE;
-        this.magicNumber = HITS;
+        this.baseMagicNumber = this.magicNumber = HITS;
         this.isMainCard = true;
 
         linkCard(new QuantumStrikeMulti());
@@ -63,6 +63,16 @@ public class QuantumStrikeDouble extends AbstractQuantumCard {
         for(int i = 1; i < this.magicNumber+1; i++) {
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }
+    }
+
+    @Override
+    public void onSwapIn() {
+
+    }
+
+    @Override
+    public void onSwapOut() {
+
     }
 
     //Upgraded stats.

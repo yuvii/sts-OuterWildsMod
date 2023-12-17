@@ -51,4 +51,14 @@ public class GhostMatterWeak extends AbstractQuantumCard {
             this.addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, this.magicNumber, false), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
         }
     }
+
+    @Override
+    public void onSwapIn() {
+
+    }
+
+    @Override
+    public void onSwapOut() {
+
+    }
 }

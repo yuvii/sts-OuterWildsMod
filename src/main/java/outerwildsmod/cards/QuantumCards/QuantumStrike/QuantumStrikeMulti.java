@@ -50,6 +50,16 @@ public class QuantumStrikeMulti extends AbstractQuantumCard {
         }
     }
 
+    @Override
+    public void onSwapIn() {
+
+    }
+
+    @Override
+    public void onSwapOut() {
+
+    }
+
     //Upgraded stats.
     @Override
     public void upgrade() {

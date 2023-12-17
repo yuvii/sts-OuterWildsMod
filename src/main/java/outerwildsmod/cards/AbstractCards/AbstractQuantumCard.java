@@ -52,12 +52,17 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         this.isLocked = true;
+        this.showPreview = false;
         this.useCard(abstractPlayer, abstractMonster);
     }
 
     public boolean canSwap() { return !this.isLocked;  }
 
     abstract public void useCard(AbstractPlayer p, AbstractMonster m);
+
+    abstract public void onSwapIn();
+
+    abstract public void onSwapOut();
 
     public AbstractQuantumCard getRandomLinked() {
         return this.linkedCards.get(RngController.RandInRange(this.linkedCards.size()));
@@ -83,7 +88,7 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
             AbstractQuantumCard newCard = this.getRandomLinked(true);
 
             if (!(newCard == this)) {
-                addToBot(new SwapCardsAction(this, newCard));
+                addToBot(new SwapCardsAction(this, newCard, false));
             }
         }
 

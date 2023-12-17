@@ -28,14 +28,8 @@ public class BlinkAction extends AbstractGameAction {
             c = abstractCard;
             if (c instanceof AbstractQuantumCard && !((AbstractQuantumCard) c).linkedCards.isEmpty()) {
                 AbstractQuantumCard newCard = ((AbstractQuantumCard) c).getRandomLinked();
-                addToBot(new SwapCardsAction(c, newCard));
 
-                newCard.linkCard((AbstractQuantumCard) c);
-                for (AbstractQuantumCard qc : ((AbstractQuantumCard) c).linkedCards) {
-                    if (qc != newCard) {
-                        newCard.linkCard(qc);
-                    }
-                }
+                addToBot(new SwapCardsAction(c, newCard));
 
                 newCard.superFlash();
                 newCard.applyPowers();

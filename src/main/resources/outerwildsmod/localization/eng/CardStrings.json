@@ -37,14 +37,18 @@
     "NAME": "Quantum Strike",
     "DESCRIPTION": "${modID}:Quantum NL Deal !D! damage"
   },
+  "${modID}:QuantumStrikeDouble": {
+    "NAME": "Quantum Strike",
+    "DESCRIPTION": "${modID}:Quantum NL Deal !D! damage !M! times"
+  },
   "${modID}:QuantumStrikeMulti": {
     "NAME": "Quantum Strike",
     "DESCRIPTION": "${modID}:Quantum NL Deal !D! damage !M! times"
   },
   "${modID}:Blink": {
     "NAME": "Blink",
-    "DESCRIPTION": "Draw !M! card. ${Blink}. Upgrade when drawn. NL Exhaust",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards"
+    "DESCRIPTION": "Draw !M! card. NL ${modID}:Blink NL Upgrade when drawn. NL Exhaust",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL ${modID}:Blink NL Exhaust"
   },
   "${modID}:DozeOff": {
     "NAME": "Doze Off",
