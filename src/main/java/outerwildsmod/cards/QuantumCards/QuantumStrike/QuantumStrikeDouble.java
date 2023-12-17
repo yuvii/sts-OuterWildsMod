@@ -18,10 +18,10 @@ import java.util.List;
 import static outerwildsmod.outerwildsmod.makeID;
 import static outerwildsmod.util.TextureLoader.getCardTextureString;
 
-public class QuantumStrikeSingle extends AbstractQuantumCard {
+public class QuantumStrikeDouble extends AbstractQuantumCard {
 
 
-    public static final String ID = makeID("QuantumStrikeSingle");
+    public static final String ID = makeID("QuantumStrikeDouble");
     public static final String IMG = getCardTextureString(ID, CardType.ATTACK);
 
 
@@ -32,19 +32,21 @@ public class QuantumStrikeSingle extends AbstractQuantumCard {
 
     private static final int COST = 1;
 
-    private static final int BASE_DAMAGE = 10;
-    private static final int UPG_DAMAGE = 12;
+    private static final int BASE_DAMAGE = 5;
+
+    private static final int HITS = 2;
+    private static final int UPG_DAMAGE = 7;
 
     protected static ArrayList<TooltipInfo> toolTips;
 
-    public QuantumStrikeSingle() {
+    public QuantumStrikeDouble() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         this.baseDamage = BASE_DAMAGE;
+        this.magicNumber = HITS;
         this.isMainCard = true;
 
         linkCard(new QuantumStrikeMulti());
-        linkCard(new QuantumStrikeDouble());
 
     }
 
@@ -58,7 +60,9 @@ public class QuantumStrikeSingle extends AbstractQuantumCard {
 //    }
 
     public void useCard(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        for(int i = 1; i < this.magicNumber+1; i++) {
+            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        }
     }
 
     //Upgraded stats.

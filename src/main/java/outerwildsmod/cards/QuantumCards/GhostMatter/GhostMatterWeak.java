@@ -39,6 +39,7 @@ public class GhostMatterWeak extends AbstractQuantumCard {
 
         this.baseMagicNumber = MAGIC;
         this.magicNumber = this.baseMagicNumber;
+
     }
 
     public void useCard(AbstractPlayer p, AbstractMonster m) {

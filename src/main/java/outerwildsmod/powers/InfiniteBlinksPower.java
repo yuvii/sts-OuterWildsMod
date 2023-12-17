@@ -2,11 +2,10 @@ package outerwildsmod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.tempCards.Shiv;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import outerwildsmod.cards.common.skills.Blink;
+import outerwildsmod.cards.QuantumCards.Blink;
 
 import static outerwildsmod.outerwildsmod.makeID;
 

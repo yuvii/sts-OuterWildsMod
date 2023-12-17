@@ -43,7 +43,7 @@
   },
   "${modID}:Blink": {
     "NAME": "Blink",
-    "DESCRIPTION": "Draw !M! card. Upgrades when drawn. NL Exhaust",
+    "DESCRIPTION": "Draw !M! card. ${Blink}. Upgrade when drawn. NL Exhaust",
     "UPGRADE_DESCRIPTION": "Draw !M! cards"
   },
   "${modID}:DozeOff": {

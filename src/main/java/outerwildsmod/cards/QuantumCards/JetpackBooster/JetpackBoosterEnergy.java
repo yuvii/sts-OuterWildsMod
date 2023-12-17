@@ -29,6 +29,7 @@ public class JetpackBoosterEnergy extends AbstractQuantumCard {
     public JetpackBoosterEnergy() {
         super(cardInfo);
         this.exhaust = true;
+
     }
 
     public void useCard(AbstractPlayer p, AbstractMonster m) {

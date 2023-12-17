@@ -3,6 +3,7 @@ package outerwildsmod.cards.AbstractCards;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import outerwildsmod.actions.SwapCardsAction;
 import outerwildsmod.cards.basic.Scout;
 import outerwildsmod.util.CardInfo;
 import outerwildsmod.util.RngController;
@@ -32,15 +33,8 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
     }
 
     public void linkCard(AbstractQuantumCard linkedCard) {
-
-        this.linkedCards.add( linkedCard );
-
-        for (AbstractQuantumCard c : this.linkedCards) {
-            c.linkCard(this);
-
-            if (c != linkedCard) {
-                linkedCard.linkCard(c);
-            }
+        if (!this.linkedCards.contains(linkedCard)) {
+            this.linkedCards.add(linkedCard);
         }
     }
 
@@ -71,7 +65,7 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
 
     public AbstractQuantumCard getRandomLinked(boolean includeSelf) {
         if (includeSelf) {
-            int range = this.linkedCards.size() + 1;
+            int range = this.linkedCards.size();
             int res = RngController.RandInRange(range);
 
             if (res == range) { return this; }
@@ -79,6 +73,20 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
         }
 
         return this.getRandomLinked();
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        super.triggerWhenDrawn();
+
+        if (!this.linkedCards.isEmpty()) {
+            AbstractQuantumCard newCard = this.getRandomLinked(true);
+
+            if (!(newCard == this)) {
+                addToBot(new SwapCardsAction(this, newCard));
+            }
+        }
+
     }
 
 }

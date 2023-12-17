@@ -21,9 +21,8 @@ import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import outerwildsmod.cards.QuantumCards.GhostMatter.GhostMatterVuln;
 import outerwildsmod.cards.basic.HDefend;
-import outerwildsmod.cards.basic.HStrike;
 import outerwildsmod.cards.QuantumCards.QuantumStrike.QuantumStrikeSingle;
-import outerwildsmod.cards.common.skills.DozeOff;
+import outerwildsmod.cards.QuantumCards.DozeOff;
 
 import java.util.ArrayList;
 
@@ -84,17 +83,16 @@ public class Hearthian extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
         //List of IDs of cards for your starting deck.
         //If you want multiple of the same card, you have to add it multiple times.
-        retVal.add(HStrike.ID);
-        retVal.add(HStrike.ID);
+        retVal.add(QuantumStrikeSingle.ID);
+        retVal.add(QuantumStrikeSingle.ID);
         retVal.add(HDefend.ID);
         retVal.add(HDefend.ID);
-        retVal.add(HStrike.ID);
-        retVal.add(HStrike.ID);
+        retVal.add(QuantumStrikeSingle.ID);
+        retVal.add(QuantumStrikeSingle.ID);
         retVal.add(HDefend.ID);
         retVal.add(HDefend.ID);
 
         retVal.add(GhostMatterVuln.ID);
-        retVal.add(QuantumStrikeSingle.ID);
         retVal.add(DozeOff.ID);
 
         return retVal;

@@ -28,7 +28,12 @@
       "||",
       "or"
     ],
-    "DESCRIPTION": "Choose an option. This card will lock in to that state for the rest of combat."
+    "DESCRIPTION": "Quantum cards change when not observed. Once played, they will lock to that state for the rest of combat."
+  },
+  {
+    "PROPER_NAME": "Blink",
+    "NAMES": ["Blink", "BLINK"],
+    "DESCRIPTION": "triggers change to all quantum cards that aren't locked"
   },
   {
   "PROPER_NAME": "Time",

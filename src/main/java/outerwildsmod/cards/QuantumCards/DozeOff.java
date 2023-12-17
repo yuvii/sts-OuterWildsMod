@@ -1,48 +1,37 @@
-package outerwildsmod.cards.common.skills;
+package outerwildsmod.cards.QuantumCards;
 
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import outerwildsmod.actions.BlinkAction;
 import outerwildsmod.cards.BaseCard;
+import outerwildsmod.character.Hearthian;
 import outerwildsmod.util.CardInfo;
 
 import static outerwildsmod.outerwildsmod.makeID;
 
-public class Blink extends BaseCard {
+public class DozeOff extends BaseCard {
 
     private static final CardInfo cardInfo = new CardInfo(
-            "Blink",
-            0,
+            "DozeOff",
+            1,
             CardType.SKILL,
             CardTarget.NONE,
             CardRarity.BASIC,
-            CardColor.COLORLESS
+            Hearthian.Enums.CARD_COLOR
     );
 
     public final static String ID = makeID(cardInfo.baseId);
 
-    public Blink() {
+    public DozeOff() {
         super(cardInfo);
-        this.exhaust = true;
-        this.baseMagicNumber = 0;
+
+        this.baseMagicNumber = 3;
         this.magicNumber = this.baseMagicNumber;
+        this.cardsToPreview = new Blink();
+
     }
 
-    @Override
-    public void triggerWhenDrawn() {
-        super.triggerWhenDrawn();
-        if (!this.upgraded) {
-            this.upgrade();
-        }
-    }
-
-    @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(p, this.magicNumber));
-        addToBot(new BlinkAction());
-    }
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
@@ -51,5 +40,10 @@ public class Blink extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new Blink(); }
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new MakeTempCardInHandAction(new Blink(), this.magicNumber));
+    }
+    @Override
+    public AbstractCard makeCopy() { return new DozeOff(); }
+
 }

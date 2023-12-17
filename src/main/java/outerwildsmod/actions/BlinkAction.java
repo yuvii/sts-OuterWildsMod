@@ -13,8 +13,6 @@ import outerwildsmod.util.RngController;
 import java.util.Iterator;
 
 public class BlinkAction extends AbstractGameAction {
-    private static final UIStrings uiStrings;
-    public static final String[] TEXT;
     private final AbstractPlayer p;
 
     public BlinkAction() {
@@ -28,9 +26,17 @@ public class BlinkAction extends AbstractGameAction {
 
         for (AbstractCard abstractCard : this.p.hand.group) {
             c = abstractCard;
-            if (c instanceof AbstractQuantumCard) {
+            if (c instanceof AbstractQuantumCard && !((AbstractQuantumCard) c).linkedCards.isEmpty()) {
                 AbstractQuantumCard newCard = ((AbstractQuantumCard) c).getRandomLinked();
                 addToBot(new SwapCardsAction(c, newCard));
+
+                newCard.linkCard((AbstractQuantumCard) c);
+                for (AbstractQuantumCard qc : ((AbstractQuantumCard) c).linkedCards) {
+                    if (qc != newCard) {
+                        newCard.linkCard(qc);
+                    }
+                }
+
                 newCard.superFlash();
                 newCard.applyPowers();
             }
@@ -39,8 +45,4 @@ public class BlinkAction extends AbstractGameAction {
         this.isDone = true;
     }
 
-    static {
-        uiStrings = CardCrawlGame.languagePack.getUIString("BlinkAction");
-        TEXT      = uiStrings.TEXT;
-    }
 }
