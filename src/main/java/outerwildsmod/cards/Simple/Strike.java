@@ -1,4 +1,4 @@
-package outerwildsmod.cards.basic;
+package outerwildsmod.cards.Simple;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -12,10 +12,10 @@ import outerwildsmod.util.CardInfo;
 
 import static outerwildsmod.outerwildsmod.makeID;
 
-public class HStrike extends BaseCard {
+public class Strike extends BaseCard {
 
     private static final CardInfo cardInfo = new CardInfo(
-            "HStrike",
+            "Strike",
             1,
             CardType.ATTACK,
             CardTarget.ENEMY,
@@ -30,7 +30,7 @@ public class HStrike extends BaseCard {
 
 
 
-    public HStrike() {
+    public Strike() {
         super(cardInfo);
         setDamage(DAMAGE, UPG_DAMAGE);
     }
@@ -42,5 +42,5 @@ public class HStrike extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new HStrike(); }
+    public AbstractCard makeCopy() { return new Strike(); }
 }

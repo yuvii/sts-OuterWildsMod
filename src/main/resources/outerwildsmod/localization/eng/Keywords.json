@@ -32,7 +32,7 @@
   },
   {
     "PROPER_NAME": "Blink",
-    "NAMES": ["Blink", "BLINKKW"],
+    "NAMES": ["Blink", "blink"],
     "DESCRIPTION": "triggers change to all quantum cards that aren't locked"
   },
   {

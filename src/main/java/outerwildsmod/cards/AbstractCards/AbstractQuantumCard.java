@@ -1,14 +1,12 @@
 package outerwildsmod.cards.AbstractCards;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import outerwildsmod.actions.SwapCardsAction;
-import outerwildsmod.cards.basic.Scout;
+import outerwildsmod.powers.SuperPositionPower;
 import outerwildsmod.util.CardInfo;
 import outerwildsmod.util.RngController;
-
-import java.util.Random;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 import static outerwildsmod.util.TextureLoader.getCardTextureString;
@@ -19,6 +17,8 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
 
     public boolean isMainCard = false;
 
+    private String initialDescription;
+
     public AbstractQuantumCard(String id,
                                String img,
                                int cost,
@@ -27,6 +27,7 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
                                CardRarity rarity,
                                CardTarget target) {
         super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
+        this.initialDescription = languagePack.getCardStrings(id).DESCRIPTION;
     }
     public AbstractQuantumCard(CardInfo cardInfo) {
         this(cardInfo.baseId, getCardTextureString(cardInfo.baseId, cardInfo.cardType), cardInfo.baseCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
@@ -91,7 +92,35 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
                 addToBot(new SwapCardsAction(this, newCard, false));
             }
         }
-
     }
 
+    @Override
+    public void update() {
+        super.update();
+
+        AbstractPlayer player = AbstractDungeon.player;
+        String superposition  = SuperPositionPower.POWER_ID;
+
+        if (player.hasPower(superposition)) {
+
+            if ( ((SuperPositionPower)player.getPower(superposition)).active ) {
+                this.beginGlowing();
+
+                for (AbstractQuantumCard qc : this.linkedCards) {
+                    this.rawDescription = this.rawDescription + "NL AND NL" + qc.rawDescription ;
+                    this.initializeDescription();
+                }
+
+            } else {
+                if (this.isGlowing) {
+                    this.stopGlowing();
+                }
+
+                this.rawDescription = this.initialDescription;
+                this.initializeDescription();
+            }
+
+        }
+
+    }
 }

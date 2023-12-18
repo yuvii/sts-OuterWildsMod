@@ -40,6 +40,7 @@ public class GhostMatterVuln extends AbstractQuantumCard {
 
         this.baseMagicNumber = MAGIC;
         this.magicNumber = this.baseMagicNumber;
+        this.exhaust = true;
 
         this.isMainCard = true;
 

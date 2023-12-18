@@ -1,4 +1,4 @@
-package outerwildsmod.cards.uncommon;
+package outerwildsmod.cards.TimeCards;
 
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -80,8 +80,6 @@ import outerwildsmod.cards.BaseCard;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import outerwildsmod.character.Hearthian;
-import outerwildsmod.outerwildsmod;
-import outerwildsmod.powers.BasePower;
 import outerwildsmod.powers.DoubleTimePower;
 import outerwildsmod.util.CardInfo;
 

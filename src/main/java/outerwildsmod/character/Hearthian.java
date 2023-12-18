@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.relics.BurningBlood;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import outerwildsmod.cards.QuantumCards.GhostMatter.GhostMatterVuln;
-import outerwildsmod.cards.basic.HDefend;
+import outerwildsmod.cards.Simple.Defend;
 import outerwildsmod.cards.QuantumCards.QuantumStrike.QuantumStrikeSingle;
 import outerwildsmod.cards.QuantumCards.DozeOff;
 
@@ -85,12 +85,12 @@ public class Hearthian extends CustomPlayer {
         //If you want multiple of the same card, you have to add it multiple times.
         retVal.add(QuantumStrikeSingle.ID);
         retVal.add(QuantumStrikeSingle.ID);
-        retVal.add(HDefend.ID);
-        retVal.add(HDefend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
         retVal.add(QuantumStrikeSingle.ID);
         retVal.add(QuantumStrikeSingle.ID);
-        retVal.add(HDefend.ID);
-        retVal.add(HDefend.ID);
+        retVal.add(Defend.ID);
+        retVal.add(Defend.ID);
 
         retVal.add(GhostMatterVuln.ID);
         retVal.add(DozeOff.ID);

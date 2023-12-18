@@ -37,6 +37,7 @@ public class GhostMatterWeak extends AbstractQuantumCard {
     public GhostMatterWeak() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
+        this.exhaust = true;
         this.baseMagicNumber = MAGIC;
         this.magicNumber = this.baseMagicNumber;
 

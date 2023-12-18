@@ -1,4 +1,4 @@
-package outerwildsmod.cards.basic;
+package outerwildsmod.cards.Simple;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,10 +10,10 @@ import outerwildsmod.util.CardInfo;
 
 import static outerwildsmod.outerwildsmod.makeID;
 
-public class HDefend extends BaseCard {
+public class Scout extends BaseCard {
 
     private static final CardInfo cardInfo = new CardInfo(
-            "HDefend",
+            "Scout",
             1,
             CardType.SKILL,
             CardTarget.SELF,
@@ -27,7 +27,7 @@ public class HDefend extends BaseCard {
 
     private final static int UPG_BLOCK = 8;
 
-    public HDefend() {
+    public Scout() {
         super(cardInfo);
         setBlock(BLOCK, UPG_BLOCK);
     }
@@ -35,8 +35,11 @@ public class HDefend extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
+//
+//        newIntent = m.nextMove();
+//        addToBot();
     }
 
     @Override
-    public AbstractCard makeCopy() { return new HDefend(); }
+    public AbstractCard makeCopy() { return new Scout(); }
 }

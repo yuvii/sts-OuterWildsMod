@@ -1,4 +1,4 @@
-package outerwildsmod.cards.uncommon;
+package outerwildsmod.cards.QuantumCards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
