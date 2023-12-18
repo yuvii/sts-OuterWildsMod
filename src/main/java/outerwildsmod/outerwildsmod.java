@@ -3,8 +3,13 @@ package outerwildsmod;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import outerwildsmod.cards.AbstractCards.AbstractQuantumCard;
 import outerwildsmod.cards.BaseCard;
 import outerwildsmod.character.Hearthian;
+import outerwildsmod.powers.SuperPositionPower;
 import outerwildsmod.util.GeneralUtils;
 import outerwildsmod.util.KeywordInfo;
 import outerwildsmod.util.TextureLoader;
@@ -34,6 +39,7 @@ public class outerwildsmod implements
         EditCharactersSubscriber,
                     EditCardsSubscriber,
         EditStringsSubscriber,
+        OnCreateDescriptionSubscriber,
         EditKeywordsSubscriber,
         PostInitializeSubscriber {
     public static ModInfo info;
@@ -215,5 +221,22 @@ public class outerwildsmod implements
                 .packageFilter("outerwildsmod.cards") //In the same package as this class
                 .setDefaultSeen(true) //And marks them as seen in the compendium
                 .cards(); //Adds the cards
+    }
+
+    @Override
+    public String receiveCreateCardDescription(String s, AbstractCard card) {
+        AbstractPlayer player = AbstractDungeon.player;
+        String superposition  = SuperPositionPower.POWER_ID;
+
+        if (player != null &&
+            player.hasPower(superposition) &&
+            ((SuperPositionPower)player.getPower(superposition)).isActive() &&
+            card instanceof AbstractQuantumCard) {
+
+            s = ((AbstractQuantumCard) card).getAllDescriptions();
+
+        }
+
+        return s;
     }
 }

@@ -23,11 +23,8 @@ public class SuperPositionPower extends BasePower implements CloneablePowerInter
 
     private int cardsSuperedThisTurn;
 
-    public boolean active;
-
     public SuperPositionPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
-        this.active = true;
     }
 
     public void atStartOfTurn() {
@@ -45,8 +42,12 @@ public class SuperPositionPower extends BasePower implements CloneablePowerInter
         return total;
     }
 
+    public boolean isActive() {
+        return ( this.amount > 0 && this.quantumCardsPlayedThisTurn() - this.cardsSuperedThisTurn <= this.amount );
+    }
+
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card instanceof AbstractQuantumCard && !card.purgeOnUse && this.amount > 0 && this.quantumCardsPlayedThisTurn() - this.cardsSuperedThisTurn <= this.amount) {
+        if (card instanceof AbstractQuantumCard && !card.purgeOnUse && this.isActive()) {
             ++this.cardsSuperedThisTurn;
             this.flash();
             AbstractMonster m = null;
@@ -56,10 +57,6 @@ public class SuperPositionPower extends BasePower implements CloneablePowerInter
 
             for (AbstractQuantumCard qc : ((AbstractQuantumCard) card).linkedCards) {
                 this.playLinkedCard(qc, m);
-            }
-
-            if (this.cardsSuperedThisTurn == this.amount) {
-                this.active = false;
             }
         }
     }

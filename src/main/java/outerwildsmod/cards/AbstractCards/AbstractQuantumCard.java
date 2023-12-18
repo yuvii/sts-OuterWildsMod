@@ -101,26 +101,24 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
         AbstractPlayer player = AbstractDungeon.player;
         String superposition  = SuperPositionPower.POWER_ID;
 
-        if (player.hasPower(superposition)) {
+        if (player != null && player.hasPower(superposition)) {
 
-            if ( ((SuperPositionPower)player.getPower(superposition)).active ) {
-                this.beginGlowing();
-
-                for (AbstractQuantumCard qc : this.linkedCards) {
-                    this.rawDescription = this.rawDescription + "NL AND NL" + qc.rawDescription ;
-                    this.initializeDescription();
-                }
-
+            if ( ((SuperPositionPower)player.getPower(superposition)).isActive() ) {
+                if (!this.isGlowing) { this.beginGlowing();  }
             } else {
-                if (this.isGlowing) {
-                    this.stopGlowing();
-                }
-
-                this.rawDescription = this.initialDescription;
-                this.initializeDescription();
+                if (this.isGlowing) { this.stopGlowing();    }
             }
 
         }
+    }
 
+    public String getAllDescriptions() {
+        String combined = this.rawDescription;
+
+        for (AbstractQuantumCard qc : this.linkedCards) {
+            combined += "NL AND* NL" + qc.rawDescription;
+        }
+
+        return combined;
     }
 }
