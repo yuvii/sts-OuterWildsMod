@@ -9,6 +9,7 @@ import outerwildsmod.util.CardInfo;
 import outerwildsmod.util.RngController;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
+import static outerwildsmod.outerwildsmod.makeID;
 import static outerwildsmod.util.TextureLoader.getCardTextureString;
 
 abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
@@ -30,7 +31,7 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
         this.initialDescription = languagePack.getCardStrings(id).DESCRIPTION;
     }
     public AbstractQuantumCard(CardInfo cardInfo) {
-        this(cardInfo.baseId, getCardTextureString(cardInfo.baseId, cardInfo.cardType), cardInfo.baseCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
+        this(cardInfo.baseId, getCardTextureString(makeID(cardInfo.baseId), cardInfo.cardType), cardInfo.baseCost, cardInfo.cardType, cardInfo.cardColor, cardInfo.cardRarity, cardInfo.cardTarget);
     }
 
     public void linkCard(AbstractQuantumCard linkedCard) {
@@ -115,8 +116,10 @@ abstract public class AbstractQuantumCard extends CustomCardMultiPreview {
     public String getAllDescriptions() {
         String combined = this.rawDescription;
 
-        for (AbstractQuantumCard qc : this.linkedCards) {
-            combined += "NL AND* NL" + qc.rawDescription;
+        if (this.linkedCards != null) {
+            for (AbstractQuantumCard qc : this.linkedCards) {
+                combined += "NL AND* NL" + qc.rawDescription;
+            }
         }
 
         return combined;

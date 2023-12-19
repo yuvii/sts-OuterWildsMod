@@ -87,5 +87,9 @@
     "NAME": "Gyroscope",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL ${modID}:Time +1D. NL Exhaust",
     "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL ${modID}:Time +1D."
+  },
+  "${modID}:Superposition": {
+    "NAME": "Superposition",
+    "DESCRIPTION": "The first ${modID}:Quantum card played each turn triggers ALL options"
   }
 }
